@@ -1,0 +1,23 @@
+body {
+  padding-top: 50px;
+}
+.img-thumbnail{
+ /*float: left;*/
+ /*vertical-align: middle;*/
+ position: relative;
+}
+
+.result-box{
+  margin-bottom: 15px;
+  margin-right: 10px;
+  
+}
+.info{
+  display: inline;
+  position: absolute;
+  left : 150px;
+}
+.video-title{
+  font-weight: bold;
+  
+}
