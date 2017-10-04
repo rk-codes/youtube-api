@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
@@ -11,21 +11,23 @@
         <link href="index.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-      <main>
+    
         <h1>Search YouTube Videos</h1>
           <form action="#" class="js-search-form">
-            <label for="query"></label>
-            <input type="text" class="js-query">
+            <label for="query">Search term</label>
+            <input type="text" id="query" class="js-query">
             <button type="submit">Search</button>
           </form>
           
-          <h2></h2>
-          <div class="js-search-results">
-            <img src="" class ="thumbnail">
-          </div>
-          <button class="prev-button">Prev</button>
-          <button class="next-button">Next</button>
-      </main>
+          <main role="main" class="results" aria-live="assertive" hidden>
+           <h2></h2>
+            <ul class="js-search-results">
+             
+            </ul>
+            <button class="prev-button">Prev</button>
+            <button class="next-button">Next</button>
+          </main>
+     
       <script src="index.js"></script>
     </body>
 </html>
