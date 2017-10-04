@@ -4,15 +4,13 @@ body {
 .img-thumbnail{
  position: relative;
 }
-
-.result-box{
-  margin-bottom: 15px;
-  margin-right: 10px;
-}
+ .results ul{
+ 	list-style: none;
+ }
 .info{
   display: inline;
   position: absolute;
-  left : 350px;
+  left : 400px;
 }
 .video-title{
   font-weight: bold;
