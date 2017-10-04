@@ -2,8 +2,10 @@ const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 let nextPage = 0;
 let prevPage = 0;
 let query = "";
+let pageCount = 0;
 
 function getDataFromApi(searchTerm, callback, page) {
+  console.log("getDataFromApi () "+ page);
     const params = {
     part: 'snippet',
     key: 'AIzaSyArySOG4MTzHdufypzKbBUrdesEvEdljYs',
@@ -20,15 +22,18 @@ function renderResult(result) {
    let videoDescription = result.snippet.description;
    let title = result.snippet.title;
    let chId = result.snippet.channelId;
+  
    return `
-   <div class = "result-box">
-     <a href="https://www.youtube.com/watch?v=${videoId}"><img src = "${imgUrl}" class="img-thumbnail"></a>
+   
+     <li><a href="https://www.youtube.com/watch?v=${videoId}"><img src = "${imgUrl}" class="img-thumbnail"
+      alt="thumbnail of video"></a>
      <div class = "info">
-        <span class="video-title">"${title}"</span>
-        <p>"${videoDescription}"</p>
+        <span class="video-title">${title}</span>
+        <p>${videoDescription}</p>
         <a href="https://www.youtube.com/channel/${chId}/videos">More from this channel</a>
      </div>
-    </div`
+     </li>
+    `
   
 }
 
@@ -36,7 +41,8 @@ function displayYouTubeSearchData(data) {
    const results = data.items.map((item,index) => renderResult(item));
    nextPage = data.nextPageToken;
    prevPage = data.prevPageToken;
-   $('h2').text(`Results for "${query}"`);
+   $('.results').prop('hidden', false);
+   $('h2').text(` ${data.pageInfo.totalResults} Results for "${query}"`);
    $('.js-search-results').html(results);
    $('.next-button').show();
    if(data.prevPageToken){
@@ -45,7 +51,6 @@ function displayYouTubeSearchData(data) {
    else{
      $('.prev-button').hide();
    }
-   $('.js-search-results').html(results);
 }
 
 function handleNextClick(){
